@@ -4,29 +4,34 @@ Nesse exercício, você está livre para escolher os nomes para suas variáveis 
 
 ```js
 // Crie uma função que receba dois argumentos e retorne a soma dos mesmos.
-?
+function soma(val1, val2) {
+    return val1+val2
+}
 
 // Declare uma variável que receba a invocação da função criada acima, passando dois números quaisquer por argumento, e somando `5` ao resultado retornado da função.
-?
+var soma = soma(5, 5) + 5
 
 // Qual o valor atualizado dessa variável?
-?
+15
 
 // Declare uma nova variável, sem valor.
-?
+var numero
 
 /*
 Crie uma função que adicione um valor à variável criada acima, e retorne a string:
     O valor da variável agora é VALOR.
 Onde VALOR é o novo valor da variável.
 */
-?
+function valor(novoNumero) {
+    numero = novoNumero
+    return 'O valor da variável agora é: '+numero
+}
 
 // Invoque a função criada acima.
-?
+valor(10)
 
 // Qual o retorno da função? (Use comentários de bloco).
-?
+//'O valor da variável agora é: 10'
 
 /*
 Crie uma função com as seguintes características:
@@ -35,19 +40,25 @@ Crie uma função com as seguintes características:
     Preencha todos os valores corretamente!
 3. O retorno da função deve ser a multiplicação dos 3 argumentos, somando `2` ao resultado da multiplicação.
 */
-?
+function valores(number1, number2, number3){
+    if(typeof number1 == 'undefined' || typeof number2 == 'undefined' || number3 == 'undefined') {
+        return 'Preencha todos os valores corretamente!'
+    } else {
+        return (number1 * number2 * number3) + 2
+    }
+}
 
 // Invoque a função criada acima, passando só dois números como argumento.
-?
+valores(1,2)
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-?
+//"Preencha todos os valores corretamente!"
 
 // Agora invoque novamente a função criada acima, mas passando todos os três argumentos necessários.
-?
+valores(1,2,3)
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-?
+//8
 
 /*
 Crie uma função com as seguintes características:
@@ -60,6 +71,37 @@ Crie uma função com as seguintes características:
 */
 ?
 
+function resultados({number1=null, number2=null, number3=null}) {
+    //2. Se somente um argumento for passado, retorne o valor do argumento.
+    if (number1 !== null && number2 == null &&  number3 == null) {
+        return number1
+    } else if (number1 == null && number2 !== null &&  number3 == null) {
+        return number2
+    } else if (number1 == null && number2 == null &&  number3 !== null) {
+        return number3
+    }
+
+    //3. Se dois argumentos forem passados, retorne a soma dos dois argumentos.
+    if (number1 !== null && number2 !== null && number3 == null) {
+        return number1+number2
+    } else if (number1 !== null && number2 == null && number3 !== null) {
+        return number1+number3
+    }
+
+    //4. Se todos os argumentos forem passados, retorne a soma do primeiro com o segundo, e o resultado, dividido pelo terceiro.
+    if (number1 !== null && number2 !== null && number3 !== null) {
+        return (number1+number2)/number3
+    }
+
+    //5. Se nenhum argumento for passado, retorne o valor booleano `false`.
+    if (number1 == null && number2 == null && number3 == null) {
+        return false
+    }
+}
+
 // Invoque a função acima utilizando todas as possibilidades (com nenhum argumento, com um, com dois e com três.) Coloque um comentário de linha ao lado da função com o resultado de cada invocação.
-?
+resultados({}) //false
+resultados({number1:10}) //10
+resultados({number1:10, number3:1}) //11
+resultados({number1:10, number2:2, number3:2}) //6
 ```
