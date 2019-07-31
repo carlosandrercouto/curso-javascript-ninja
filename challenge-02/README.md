@@ -41,11 +41,11 @@ Crie uma função com as seguintes características:
 3. O retorno da função deve ser a multiplicação dos 3 argumentos, somando `2` ao resultado da multiplicação.
 */
 function valores(number1, number2, number3){
-    if(typeof number1 == 'undefined' || typeof number2 == 'undefined' || number3 == 'undefined') {
+    if(number1 === undefined || number2 === undefined || number3 === undefined) {
         return 'Preencha todos os valores corretamente!'
-    } else {
-        return (number1 * number2 * number3) + 2
     }
+    
+    return (number1 * number2 * number3) + 2
 }
 
 // Invoque a função criada acima, passando só dois números como argumento.
@@ -71,30 +71,30 @@ Crie uma função com as seguintes características:
 */
 ?
 
-function resultados({number1=null, number2=null, number3=null}) {
+function resultados({number1, number2, number3}) {
     //2. Se somente um argumento for passado, retorne o valor do argumento.
-    if (number1 !== null && number2 == null &&  number3 == null) {
+    if (number1 !== undefined && number2 == undefined &&  number3 == undefined) {
         return number1
-    } else if (number1 == null && number2 !== null &&  number3 == null) {
+    } else if (number1 == undefined && number2 !== undefined &&  number3 == undefined) {
         return number2
-    } else if (number1 == null && number2 == null &&  number3 !== null) {
+    } else if (number1 == undefined && number2 == undefined &&  number3 !== undefined) {
         return number3
     }
 
     //3. Se dois argumentos forem passados, retorne a soma dos dois argumentos.
-    if (number1 !== null && number2 !== null && number3 == null) {
+    if (number1 !== undefined && number2 !== undefined && number3 == undefined) {
         return number1+number2
-    } else if (number1 !== null && number2 == null && number3 !== null) {
+    } else if (number1 !== undefined && number2 == undefined && number3 !== undefined) {
         return number1+number3
     }
 
     //4. Se todos os argumentos forem passados, retorne a soma do primeiro com o segundo, e o resultado, dividido pelo terceiro.
-    if (number1 !== null && number2 !== null && number3 !== null) {
+    if (number1 !== undefined && number2 !== undefined && number3 !== undefined) {
         return (number1+number2)/number3
     }
 
     //5. Se nenhum argumento for passado, retorne o valor booleano `false`.
-    if (number1 == null && number2 == null && number3 == null) {
+    if (number1 == undefined && number2 == undefined && number3 == undefined) {
         return false
     }
 }
