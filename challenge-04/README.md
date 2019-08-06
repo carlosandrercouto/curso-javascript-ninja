@@ -9,7 +9,7 @@ para o contrário.
 */
 var isTruthy = function(val1){
 	return !!val1
-}
+};
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 isTruthy(false)
@@ -18,6 +18,8 @@ isTruthy(undefined)
 isTruthy(0)
 isTruthy(NaN)
 isTruthy('')
+isTruthy({})
+isTruthy([])
 
 /*
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
@@ -103,14 +105,22 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 carro.embarcar = function(pessoas){
-	if(carro.assentos > pessoas && carro.assentos > carro.quantidadePessoas){
-		var passageiros = carro.quantidadePessoas += pessoas
+	var novaLotacao = carro.quantidadePessoas + pessoas
+	
+	if(carro.assentos > pessoas && carro.assentos >= novaLotacao){
+		var passageiros = carro.quantidadePessoas + pessoas
+		carro.quantidadePessoas = passageiros
 		
 		return "Já temos "+  passageiros  +" pessoas no carro!"
+	} else if(carro.assentos == carro.quantidadePessoas) {
+		return "O carro já está lotado!"
+	
+	} else if(novaLotacao > carro.assentos) {
+		var assentosDisponiveis = carro.assentos - carro.quantidadePessoas	
+		return "Só cabe mais "+ assentosDisponiveis + (assentosDisponiveis == 1 ? " Pessoa!" : " Pessoas!")
 	}
-
-	return "Já temos "+  carro.quantidadePessoas  +" pessoas no carro cheio!"
 }
+
 
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
@@ -120,38 +130,38 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-?
+carro.obterCor()//"Branco"
 
 // Mude a cor do carro para vermelho.
-?
+carro.mudaCor("Vermelho")
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor()//"Vermelho"
 
 // Mude a cor do carro para verde musgo.
-?
+carro.mudaCor("Verde Musgo")
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor()//"Verde Musgo"
 
 // Qual a marca e modelo do carro?
-?
+carro.obterMarcaModelo()//"Esse carro é um Toyota Hillux"
 
 // Adicione 2 pessoas no carro.
-?
+carro.embarcar(2)//"Já temos 2 pessoas no carro!"
 
 // Adicione mais 4 pessoas no carro.
-?
+carro.embarcar(4)//"Só cabe mais 3 Pessoas!"
 
 // Faça o carro encher.
-?
+carro.embarcar(3)//"Já temos 5 pessoas no carro!"
 
 // Tire 4 pessoas do carro.
-?
+carro.quantidadePessoas = 1
 
 // Adicione 10 pessoas no carro.
-?
+carro.quantidadePessoas = 10
 
 // Quantas pessoas temos no carro?
-?
+carro.quantidadePessoas//10
 ```
